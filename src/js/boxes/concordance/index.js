@@ -1,16 +1,16 @@
 export class ConcordanceBox {
 
-    constructor(conf, target, onEvent) {
+    constructor(conf, target, eventDispatcher) {
         this.conf = conf;
         this.target = target;
-        this.onEvent = onEvent;
+        this.eventDispatcher = eventDispatcher;
         this.svg = null;
     }
 
     run({query, lang}) {
-        this.onEvent('busy', this);
+        this.eventDispatcher.dispatch('busy', this);
         window.setTimeout(() => {
-            this.onEvent('loaded', this);
+            this.eventDispatcher.dispatch('loaded', this);
             this.draw([
                 ['been consulted yet', 'about', 'the plans to'],
                 ['give enough information', 'about',	'tax proposals for'],
@@ -54,6 +54,6 @@ export class ConcordanceBox {
 }
 
 
-export const init = (conf, target, onEvent) => {
-    return new ConcordanceBox(conf, target, onEvent);
+export const init = (conf, target, eventDispatcher) => {
+    return new ConcordanceBox(conf, target, eventDispatcher);
 }

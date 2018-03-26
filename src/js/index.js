@@ -10,7 +10,9 @@ class SearchModule {
         this.conf = conf;
         this.components = components;
         this.boxes = [];
-        this.eventHandler = this.eventHandler.bind(this);
+        this.eventDispatcher = {
+            dispatch: (event, source) => this.eventHandler(event, source)
+        };
     }
 
     init() {
@@ -83,7 +85,7 @@ export const init = (conf) => {
         window1Init(
             conf,
             document.getElementById('window1-mount'),
-            sm.eventHandler
+            sm.eventDispatcher
         ),
         0
     );
@@ -92,7 +94,7 @@ export const init = (conf) => {
         window4Init(
             conf,
             document.getElementById('window4-mount'),
-            sm.eventHandler
+            sm.eventDispatcher
         ),
         0
     );
