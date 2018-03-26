@@ -1,5 +1,5 @@
-import {init as window1Init} from './ttDistrib/index';
-import {init as window4Init} from './concordance/index';
+import {init as window1Init} from './boxes/ttDistrib/index';
+import {init as window4Init} from './boxes/concordance/index';
 
 require('../css/index.css'); // webpack
 
